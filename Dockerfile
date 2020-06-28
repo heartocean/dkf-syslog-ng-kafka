@@ -12,5 +12,5 @@ RUN yum -y install  glib2-devel openssl-devel  which libnet-devel  \
 && cd   .. \
 && tar -zxvf syslog-ng-3.28.1.tar.gz  && cd syslog-ng-3.28.1 \
 && ./configure --prefix=/program_files/syslog-ng-3.28.1    --with-mongoc=no   --with-librabbitmq-client=no  --enable-stomp=no   --enable-legacy-mongodb-options=no   --enable-json=yes     --disable-smtp     --disable-http --enable-stomp=no --enable-geoip=no  --enable-geoip2=no   --disable-python      --disable-riemann  --enable-kafka  --disable-redis --enable-afsnmp=no  LIBRDKAFKA_CFLAGS=-I/program_files/apps/include  LIBRDKAFKA_LIBS="-L/program_files/apps/lib  -lrdkafka"     --enable-sql=no --enable-native=no  --enable-tcp-wrapper=no --with-ivykis=/usr/lib64/    --enable-spoof-source=no  &&  make  &&  make install   \
-&&  rm -rf /program_files/tmps 
-
+&& echo /program_files/apps/lib >> /etc/ld.so.conf \
+&& cd .. && rm -rf /program_files/tmps   && yum clean all  && rm -rf /var/cache/yum/*
