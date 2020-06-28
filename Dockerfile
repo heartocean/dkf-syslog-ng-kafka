@@ -2,9 +2,8 @@ from  centos:centos7.4.1708
 
 WORKDIR /program_files/tmps 
 
-RUN yum install -y   automake autoconf libtool make gcc-c++
-RUN yum install -y   epel-release.noarch &&  yum install -y ivykis-devel  json-c-devel  wget
-RUN yum -y install  glib2-devel openssl-devel  which libnet-devel  \
+RUN yum install -y   automake autoconf libtool make gcc-c++ && yum install -y   epel-release.noarch &&  yum install -y ivykis-devel  json-c-devel  wget  \
+&& yum -y install  glib2-devel openssl-devel  which libnet-devel  \
 && wget  https://codeload.github.com/edenhill/librdkafka/tar.gz/v1.3.0  -O librdkafka-1.3.0.tar.gz \ 
 && wget  https://github.com/syslog-ng/syslog-ng/releases/download/syslog-ng-3.28.1/syslog-ng-3.28.1.tar.gz -O syslog-ng-3.28.1.tar.gz \
 && tar -zxvf librdkafka-1.3.0.tar.gz && cd  librdkafka-1.3.0 \
